@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Something My Heart Wanted to Say</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient canvas layers -->
+  <canvas id="stars-canvas"></canvas>
+  <div id="cursor-glow"></div>
+  <div id="floating-particles"></div>
+
+  <!-- The recurring moon: its phase grows from section to section -->
+  <div id="moon-wrap" aria-hidden="true">
+    <svg id="moon-svg" viewBox="0 0 200 200" width="140" height="140">
+      <defs>
+        <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fff7e0" stop-opacity="0.9"/>
+          <stop offset="60%" stop-color="#f4e4c1" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#f4e4c1" stop-opacity="0"/>
+        </radialGradient>
+        <clipPath id="phaseClip">
+          <rect id="phaseRect" x="0" y="0" width="0" height="200"/>
+        </clipPath>
+      </defs>
+      <circle cx="100" cy="100" r="92" fill="url(#moonGlow)"/>
+      <circle cx="100" cy="100" r="58" fill="#0c1226"/>
+      <circle cx="100" cy="100" r="58" fill="#f6e9c9" clip-path="url(#phaseClip)"/>
+      <circle cx="100" cy="100" r="58" fill="none" stroke="#f6e9c9" stroke-opacity="0.25" stroke-width="1"/>
+    </svg>
+  </div>
+
+  <!-- Side navigation dots -->
+  <nav id="dot-nav" aria-label="Section navigation">
+    <a href="#landing" class="dot active" data-label="Beginning"></a>
+    <a href="#apology" class="dot" data-label="My Apology"></a>
+    <a href="#promise" class="dot" data-label="My Promise"></a>
+    <a href="#about-her" class="dot" data-label="You"></a>
+    <a href="#memories" class="dot" data-label="Memories"></a>
+    <a href="#letter" class="dot" data-label="The Letter"></a>
+    <a href="#final" class="dot" data-label="Always"></a>
+  </nav>
+
+  <!-- Music control -->
+  <button id="music-toggle" aria-label="Play background music" aria-pressed="false">
+    <svg id="icon-muted" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M4 9v6h4l5 5V4L8 9H4z"/><line x1="16" y1="9" x2="22" y2="15" stroke="currentColor" stroke-width="2"/><line x1="22" y1="9" x2="16" y2="15" stroke="currentColor" stroke-width="2"/></svg>
+    <svg id="icon-playing" viewBox="0 0 24 24" width="20" height="20" style="display:none"><path fill="currentColor" d="M4 9v6h4l5 5V4L8 9H4z"/><path fill="none" stroke="currentColor" stroke-width="2" d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+  </button>
+  <audio id="bg-music" loop preload="none">
+    <source src="music/song.mp3" type="audio/mpeg">
+  </audio>
+
+  <main>
+
+    <!-- ============ LANDING ============ -->
+    <section id="landing" class="section">
+      <div class="hero-content">
+        <p class="eyebrow">for you</p>
+        <h1 id="typewriter" class="typewriter-text" aria-live="polite"></h1>
+        <span class="cursor-blink">|</span>
+        <a href="#apology" class="glow-btn" id="hear-me-btn">
+          <span>Please Hear Me</span> <span class="heart">❤</span>
+        </a>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <span></span>
+      </div>
+    </section>
+
+    <!-- ============ APOLOGY ============ -->
+    <section id="apology" class="section">
+      <div class="section-inner">
+        <p class="eyebrow reveal">my apology</p>
+        <h2 class="section-title reveal">I'm sorry — truly, quietly, without excuse.</h2>
+        <div class="glass-card reveal">
+          <p class="reveal-line">I know I made mistakes. Not small ones I can explain away, but ones that mattered — and I've stopped looking for reasons that make them smaller than they were.</p>
+          <p class="reveal-line">I understand I hurt you. Not just the moment itself, but the quiet after it — the doubt it might have left behind, the trust it strained. I see that now, clearly, and it sits heavy with me.</p>
+          <p class="reveal-line">I regret what happened more than I know how to say plainly. If I could take that moment and hand you something better instead, I would, without hesitation.</p>
+          <p class="reveal-line">I never wanted to become the reason for your pain. You were never supposed to be hurt by the person who cares about you most — and knowing I became that, even briefly, is the part I sit with the longest.</p>
+          <p class="reveal-line">I don't expect instant forgiveness, and I'm not asking for it here. Forgiveness, if it ever comes, has to be yours to give in your own time, on your own terms.</p>
+          <p class="reveal-line">I'm truly sorry. Not the version of sorry that wants something in return — the version that just needed to be said honestly, once, without conditions.</p>
+          <p class="reveal-line">I want to become a better person because of this, not despite it. And I know the only thing that will ever mean anything after words like these is what I do next.</p>
+          <p class="reveal-line emphasis">My actions will prove my words. That's not a promise I'm asking you to wait for — it's simply the truth of what happens now.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROMISE ============ -->
+    <section id="promise" class="section">
+      <div class="section-inner">
+        <p class="eyebrow reveal">my promise</p>
+        <h2 class="section-title reveal">Words are easy. So here is what I'll do instead.</h2>
+        <div class="promise-grid">
+          <article class="promise-card reveal">
+            <div class="promise-flame"></div>
+            <h3>Your feelings, respected</h3>
+            <p>I will listen without defending, and let what you feel be true without needing to argue it away.</p>
+          </article>
+          <article class="promise-card reveal">
+            <div class="promise-flame"></div>
+            <h3>Honesty, even when it's hard</h3>
+            <p>I will tell you the truth before it becomes something I have to explain later.</p>
+          </article>
+          <article class="promise-card reveal">
+            <div class="promise-flame"></div>
+            <h3>Thought before action</h3>
+            <p>I will pause where I used to react, and choose my next step instead of stumbling into it.</p>
+          </article>
+          <article class="promise-card reveal">
+            <div class="promise-flame"></div>
+            <h3>Never intentionally again</h3>
+            <p>I will never knowingly become the source of the pain I'm apologizing for right now.</p>
+          </article>
+          <article class="promise-card reveal">
+            <div class="promise-flame"></div>
+            <h3>Still learning, always</h3>
+            <p>I will keep learning from this — not once, and not only when it's convenient to.</p>
+          </article>
+          <article class="promise-card reveal">
+            <div class="promise-flame"></div>
+            <h3>Trust, earned slowly</h3>
+            <p>I will earn your trust back through consistency, not through asking for it.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT HER ============ -->
+    <section id="about-her" class="section">
+      <div class="section-inner narrow">
+        <p class="eyebrow reveal">about you</p>
+        <h2 class="section-title reveal">Some things I never want to say too quietly.</h2>
+        <div class="poem-block">
+          <p class="reveal-line poem-line">Your smile has a way of rearranging a room — quiet proof that good things are still possible.</p>
+          <p class="reveal-line poem-line">Your eyes hold more honesty than most people manage in a lifetime of words.</p>
+          <p class="reveal-line poem-line">Your kindness isn't performance. It's simply who you are when no one's asking you to be.</p>
+          <p class="reveal-line poem-line">Your strength carried things I only saw the surface of, and still, you kept showing up gently.</p>
+          <p class="reveal-line poem-line">Your intelligence isn't loud about itself, and that's exactly why it's the kind worth admiring.</p>
+          <p class="reveal-line poem-line">Your laughter is the sound I'd choose out of every sound in the world, if I ever had to choose just one.</p>
+          <p class="reveal-line poem-line">Your heart is generous in a world that doesn't always deserve that — mine included, on the day I forgot to.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEMORIES ============ -->
+    <section id="memories" class="section">
+      <div class="section-inner wide">
+        <p class="eyebrow reveal">memories</p>
+        <h2 class="section-title reveal">Little proofs that it wasn't all a mistake.</h2>
+        <div class="polaroid-gallery" id="gallery">
+          <!-- 12 polaroid slots -->
+        </div>
+        <p class="gallery-hint reveal">Drop your photos into <code>/images/</code> named <code>memory1.jpg</code> through <code>memory12.jpg</code> — click any polaroid to see it larger.</p>
+      </div>
+    </section>
+
+    <!-- ============ LETTER ============ -->
+    <section id="letter" class="section">
+      <div class="section-inner narrow">
+        <p class="eyebrow reveal">a letter</p>
+        <div class="letter-paper reveal">
+          <p class="letter-text">
+            My dearest,<br><br>
+            I've started this letter more times than I can count, and thrown away every version that tried too hard to be forgiven. So here's the one that just tries to be honest.<br><br>
+            I hurt you, and I've spent a long time sitting with what that actually means — not the version where I explain myself, but the version where I simply own it. I was wrong. I'm sorry. Not because I got caught in it, but because you didn't deserve it, not for a single moment.<br><br>
+            You've been one of the gentlest, most patient people I've known, and somewhere I let that become something I took for granted instead of something I protected. That's on me, and I won't dress it up as anything else.<br><br>
+            I'm not writing this to be let off easily. I'm writing it because you deserved to hear it plainly, in my own handwriting, without a screen's distance between us pretending to be closeness.<br><br>
+            Whether you choose to forgive me or not, I will always respect your decision. I simply wanted you to know how deeply sorry I am.<br><br>
+            With all the honesty I have,<br>
+            Me
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL ============ -->
+    <section id="final" class="section">
+      <div class="lantern" aria-hidden="true">
+        <div class="lantern-body"><div class="lantern-flame"></div></div>
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow reveal">thank you</p>
+        <h2 class="final-title reveal">Thank you for reading until the end.</h2>
+        <p class="final-sub reveal">No matter what happens next, I genuinely wish you happiness, peace, and countless reasons to smile.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lightbox for gallery -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button id="lightbox-close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="Memory">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
