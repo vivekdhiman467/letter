@@ -141,7 +141,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('.section');
   const dots = document.querySelectorAll('.dot');
   const phaseRect = document.getElementById('phaseRect');
+<<<<<<< HEAD
   const sectionOrder = ['landing','apology','promise','about-her','letter','final'];
+=======
+  const sectionOrder = ['landing','apology','promise','about-her','memories','letter','final'];
+>>>>>>> 9bedd34e18bc6b5a5a68ec747a81253a43094f39
 
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -206,7 +210,11 @@ document.addEventListener('DOMContentLoaded', () => {
   /* =========================================================
      8. POLAROID GALLERY
   ========================================================= */
+<<<<<<< HEAD
   /*const gallery = document.getElementById('gallery');
+=======
+  const gallery = document.getElementById('gallery');
+>>>>>>> 9bedd34e18bc6b5a5a68ec747a81253a43094f39
   const captions = [
     'that day', 'us, laughing', 'a quiet moment', 'the good kind of tired',
     'somewhere new', 'just us', 'before everything', 'still my favorite',
@@ -261,7 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   lightboxClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+<<<<<<< HEAD
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });*/
+=======
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+>>>>>>> 9bedd34e18bc6b5a5a68ec747a81253a43094f39
 
   /* =========================================================
      9. MUSIC TOGGLE
